@@ -1,7 +1,7 @@
 @import "bootstrap/variables";
 @import "bootstrap/mixins";
 
-body {
+main {
   padding-top: 70px;
 }
 
@@ -42,6 +42,18 @@ footer {
   vertical-align: middle;
 }
 
+.circle-image{
+  margin-top: -15px;
+  margin-bottom: -15px;
+  border-radius:50%;
+}
+
+.user-nav {
+  font-weight: bold;
+  font-variant: small-caps;
+  display: inline;
+}
+
 /* miscellaneous */
 
 .debug_dump {
@@ -50,4 +62,12 @@ footer {
   width: 100%;
   margin-top: 45px;
   @include box-sizing(border-box);
+}
+
+/* form */
+
+.authform {
+  padding-bottom: 45px;
+  max-width: 480px;
+  margin: 0 auto;
 }

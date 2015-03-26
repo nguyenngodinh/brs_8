@@ -12,10 +12,12 @@
   </head>
   <body>
     <%= render 'layouts/header' %>
-    <div class="container">
-      <%= render 'layouts/flash' %>
-      <%= yield %>
-    </div>
+    <main>
+      <div class="container">
+        <%= render 'layouts/flash' %>
+        <%= yield %>
+      </div>
+    </main>
     <%= render 'layouts/footer' %>
     <%= render 'layouts/debugger' %>
   </body>
