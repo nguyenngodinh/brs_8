@@ -1,0 +1,17 @@
+<div class="well well-lg authform">
+  <h2>Resend email confirmation</h2>
+
+  <%= form_for resource, as: resource_name, url: confirmation_path(resource_name),
+                         html: { method: :post } do |f| %>
+    <%= devise_error_messages! %>
+
+    <div class="form-group">
+      <%= f.label :email %>
+      <%= f.email_field :email, autofocus: true, class: 'form-control' %>
+    </div>
+
+    <%= f.submit 'Resend confirmation', class: 'btn btn-primary pull-right' %>
+  <% end %>
+
+  <%= render "users/shared/links" %>
+</div>
