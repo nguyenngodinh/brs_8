@@ -1,17 +1,10 @@
 class BooksController < ApplicationController
-  before_action :set_book, only: [:show]
-
+  
   def index
-    @books = Book.all
+    @books = Book.search_by_title params[:title_query]
   end
 
   def show
-
-  end
-
-  private
-  
-  def set_book
     @book = Book.find params[:id]
   end
 
