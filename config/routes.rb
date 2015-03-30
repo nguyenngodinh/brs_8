@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :books
+
   root             'static_pages#home'
 
   # Static pages

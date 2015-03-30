@@ -15,6 +15,7 @@ gem 'coffee-rails',            '4.1.0'
 gem 'jquery-rails',            '4.0.3'
 gem 'turbolinks',              '2.5.3'
 gem 'jbuilder',                '2.2.12'
+gem 'rb-readline',             '~> 0.5.2'
 gem 'sdoc',                    '0.4.1', group: :doc
 gem 'colorize',                '0.7.5'
 
