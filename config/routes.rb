@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get 'contact' => 'static_pages#contact'
 
   devise_for :users, path_names: { sign_up: 'register',  sign_in: 'login', sign_out: 'logout' }
+  ActiveAdmin.routes(self)
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

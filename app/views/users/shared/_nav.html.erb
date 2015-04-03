@@ -17,9 +17,17 @@
         <li>
           <%= link_to '#' do %>
             Settings
+            <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+          <% end %>
+        </li>
+        <% if current_user.admin? %>
+        <li>
+          <%= link_to admin_root_path do %>
+            Admin
             <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
           <% end %>
         </li>
+        <% end %>
         <li class="divider"></li>
         <li>
           <%= link_to destroy_user_session_path, method: :delete do %>
