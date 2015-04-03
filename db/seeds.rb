@@ -1,3 +1,4 @@
+prng = Random.new
 role = {admin: 0}
 
 ActiveRecord::Base.transaction do
@@ -26,22 +27,25 @@ ActiveRecord::Base.transaction do
   # Categories
   5.times do
     name        = Faker::Name.name
-    description = Faker::Lorem.sentence 3
+    description = Faker::Lorem.paragraph
     Category.create! name: name, description: description
   end
 
   # Books
-  20.times do
+  100.times do
     isbn            = Faker::Code.isbn
     title           = Faker::Name.title
-    edition         = Faker::Number.digit
-    publish_date    = Faker::Date.between 100.days.ago, Date.today
-    author          = Faker::Name.name 
+    edition         = prng.rand(10) + 1
+    author          = Faker::Name.name
+    cover           = prng.rand(100) < 20 ? nil :
+                      Faker::Avatar.image(slug = isbn, size ='168x238')
+    publish_date    = Faker::Date.between 15.years.ago, Date.today
     number_of_pages = Faker::Number.number 3
     category        = Category.all.sample
-    Book.create! isbn: isbn, title: title, edition: edition, 
-                 publish_date: publish_date, author: author,
-                 number_of_pages: number_of_pages,
-                 category_id: category.id
+    Book.create! isbn: isbn, title: title, edition: edition,
+                 author: author, cover: cover,
+                 category_id: category.id,
+                 publish_date: publish_date,
+                 number_of_pages: number_of_pages
   end
 end
