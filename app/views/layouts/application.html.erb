@@ -2,10 +2,10 @@
 <html>
   <head>
     <title><%= full_title yield :title %></title>
-    <%= favicon_link_tag 'logo.png', type: 'image/png', rel: 'icon'%>
-    <%= favicon_link_tag 'logo.png', type: 'image/png', rel: 'apple-touch-icon'%>
+    <%= favicon_link_tag 'site_logo.png', type: 'image/png', rel: 'icon' %>
+    <%= favicon_link_tag 'site_logo.png', type: 'image/png', rel: 'apple-touch-icon' %>
     <%= stylesheet_link_tag 'application', media: 'all',
-                                         'data-turbolinks-track' => true %>
+                            'data-turbolinks-track' => true %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= render 'layouts/shim' %>
     <%= csrf_meta_tags %>

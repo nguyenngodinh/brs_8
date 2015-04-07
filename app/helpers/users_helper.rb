@@ -1,7 +1,7 @@
 module UsersHelper
-  def avatar_url(user, options = { size: 80 })
-    if user.avatar_url.present?
-      user.avatar_url
+  def avatar_url(user, options = {size: 80})
+    if user.avatar.present?
+      user.avatar
     else
       size        = options[:size]
       # default_url = "#{root_url}images/guest.png"
