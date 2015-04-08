@@ -9,4 +9,7 @@ module UsersHelper
       "http://gravatar.com/avatar/#{gravatar_id}.png?s=#{size}"
     end
   end
+  def current_user?(user)
+    user == current_user
+  end
 end

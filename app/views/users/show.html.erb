@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+<p>
+  <strong>Name:</strong>
+  <%= @user.name %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @user.email %>
+</p>
+<%= render 'shared/stats' %>
+<%= render 'follow_form' if user_signed_in? %>
+
+<div id="following" >
+  <h1>Following users</h1>
+  <% @users = @following %>
+  <%= render 'show_follow' %>
+</div>
+
+<div id="followers">
+  <h1>Follower users</h1>
+  <%= @users = @followers %>
+  <%= render 'show_follow' %>
+</div>
+
+<%= link_to 'Back', home_path, class: 'btn btn-default' %>

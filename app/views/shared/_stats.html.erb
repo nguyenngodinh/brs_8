@@ -1,0 +1,10 @@
+<% @user ||= current_user %>
+
+<div class="stats">
+
+  <%= link_to @user.following.count.to_s + " following",
+              user_path(@user, :anchor => "following") %>
+
+  <%= link_to @user.followers.count.to_s + " followers",
+              user_path(@user, :anchor => "followers") %>
+</div>

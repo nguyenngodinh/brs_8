@@ -11,7 +11,9 @@ Rails.application.routes.draw do
   get 'about'   => 'static_pages#about'
   get 'contact' => 'static_pages#contact'
 
-  devise_for :users, path_names: { sign_up: 'register',  sign_in: 'login', sign_out: 'logout' }
+  devise_for :users, path_names: {sign_up: 'register',  sign_in: 'login', sign_out: 'logout'}
+  resources :users, only: [:show]
+  resources :relationships, only: [:create, :destroy]
   ActiveAdmin.routes(self)
 
   # The priority is based upon order of creation: first created -> highest priority.

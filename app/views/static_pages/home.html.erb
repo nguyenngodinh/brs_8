@@ -1,6 +1,29 @@
-<div class="jumbotron">
-  <h1>Book Reviewing System</h1>
-  <p>Framgia has many technical books that all employees can read. To manage and use them effectively, the management and reviewing system is needed.</p>
-</div>
-<p>This is some text.</p>
-<p>This is another text.</p>
+<% if user_signed_in? %>
+  <p id="notice"><%= notice %></p>
+
+  <h1>Users</h1>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th colspan="3">Operations</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <%= render @users %>
+    </tbody>
+  </table>
+
+  <br>
+
+<% else %>
+  <div class="jumbotron">
+    <h1>Book Reviewing System</h1>
+    <p>Framgia has many technical books that all employees can read. To manage and use them effectively, the management and reviewing system is needed.</p>
+  </div>
+  <p>This is some text.</p>
+  <p>This is another text.</p>
+<% end %>
