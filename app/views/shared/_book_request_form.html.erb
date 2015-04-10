@@ -1,0 +1,14 @@
+<% if user_signed_in? %>
+  <%= form_for @book_request do |f| %>
+
+    <%= render 'shared/error_messages', object: f.object %>
+
+    <div class="field">
+      <%= f.text_area :description, placeholder: "Book description..." %>
+    </div>
+    <div class="field">
+      <%= f.number_field :isbn %>
+    </div>
+    <%= f.submit "Make Request", class: "btn btn-primary" %>
+  <% end %>
+<% end %>

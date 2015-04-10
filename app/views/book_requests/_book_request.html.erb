@@ -1,0 +1,14 @@
+<tr>
+  <td><%= book_request.isbn %></td>
+  <td><%= book_request.description %></td>
+  <% if book_request.state == 0 %>
+    <td>pending</td>
+  </td>
+  <% else %>
+    <td>solved</td>
+  <% end %>
+  <% if current_user? book_request.user %>
+    <td><%= link_to 'Delete', book_request, method: :delete, 
+            class: 'btn btn-default', data: {confirm: "You sure?"} %></td>
+  <% end %>
+</tr>

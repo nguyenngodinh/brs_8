@@ -9,11 +9,13 @@ class User < ActiveRecord::Base
            foreign_key: :followed_id, dependent: :destroy
   has_many :following, through: :active_relationships,  source: :followed
   has_many :followers, through: :passive_relationships, source: :follower
+  has_many :book_requests, dependent: :destroy
+
   enum role: [ :admin, :member ]
 
   before_validation :normalize_attributes
   validates :role, inclusion: {in: User.roles.keys}
-
+  
   def follow(other_user)
     active_relationships.create followed_id: other_user.id
   end

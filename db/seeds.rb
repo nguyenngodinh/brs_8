@@ -59,4 +59,13 @@ ActiveRecord::Base.transaction do
   following.each {|followed| user.follow followed}
   followers.each {|follower| follower.follow user}
 
+  users = User.order(:created_at).take 6
+  50.times do
+    description = Faker::Lorem.paragraph
+    isbn = Faker::Code.isbn
+    state = false  
+    users.each {|user| user.book_requests.create! description: description, 
+                                                  isbn: isbn, state: state}
+  end
+
 end
