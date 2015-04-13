@@ -1,5 +1,5 @@
 prng = Random.new
-role = {admin: 0}
+dir  = Dir['lib/samples/books/*.pdf']
 
 ActiveRecord::Base.transaction do
   # Users
@@ -7,7 +7,7 @@ ActiveRecord::Base.transaction do
                email: "example@railstutorial.org",
                password:              "foobar",
                password_confirmation: "foobar",
-               role:  role[:admin]
+               role:  :admin
 
   User.create! name:  "Đặng Minh Dũng",
                email: "dungdm93@example.com",
@@ -32,23 +32,26 @@ ActiveRecord::Base.transaction do
   end
 
   # Books
-  100.times do
+  36.times do
     isbn            = Faker::Code.isbn
     title           = Faker::Name.title
     edition         = prng.rand(10) + 1
     author          = Faker::Name.name
     cover           = prng.rand(100) < 20 ? nil :
-                      Faker::Avatar.image(slug = isbn, size ='168x238')
+                      Faker::Avatar.image(slug = isbn, size = '168x238')
     publish_date    = Faker::Date.between 15.years.ago, Date.today
     number_of_pages = Faker::Number.number 3
     category        = Category.all.sample
+    document        = File.open dir.sample
     Book.create! isbn: isbn, title: title, edition: edition,
                  author: author, cover: cover,
                  category_id: category.id,
                  publish_date: publish_date,
-                 number_of_pages: number_of_pages
+                 number_of_pages: number_of_pages,
+                 document: document
   end
 
+  # Relationships
   users = User.all
   user  = users.first
   following = users[2..50]

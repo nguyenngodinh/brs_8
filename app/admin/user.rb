@@ -17,21 +17,15 @@ ActiveAdmin.register User, {sort_order: :id} do
   menu priority: 1
 
   scope :all, default: true
-
-  scope "Admin" do |users|
-    users.role :admin
-  end
-
-  scope "Member" do |users|
-    users.role :member
-  end
+  scope :admin
+  scope :member
 
   index do
     selectable_column
     id_column
     column :name
     column :email
-    column "Role", :role_name, sortable: :role
+    column :role
     actions
   end
 end
