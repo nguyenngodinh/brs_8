@@ -1,17 +1,25 @@
-<div class="well well-lg authform">
-  <h2>Forgot password?</h2>
+<% provide(:title, 'Forgot password') %>
 
-  <%= form_for resource, as: resource_name, url: password_path(resource_name),
-                         html: { method: :post } do |f| %>
-    <%= devise_error_messages! %>
+<div class="panel panel-success pannel-form">
+  <div class="panel-heading">
+    <h3 class="panel-title">
+      <span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
+      Forgot password?
+    </h3>
+  </div>
+  <div class="panel-body pannel-form-body">
+    <%= form_for resource, as: resource_name, url: password_path(resource_name),
+                           html: { method: :post } do |f| %>
+      <%= devise_error_messages! %>
 
-    <div class="form-group">
-      <%= f.label :email %>
-      <%= f.email_field :email, autofocus: true, class: 'form-control' %>
-    </div>
+      <div class="form-group">
+        <%= f.label :email %>
+        <%= f.email_field :email, autofocus: true, class: 'form-control' %>
+      </div>
 
-    <%= f.submit 'Reset password', class: 'btn btn-primary pull-right' %>
-  <% end %>
+      <%= f.submit 'Reset password', class: 'btn btn-primary pull-right' %>
+    <% end %>
 
-  <%= render "users/shared/links" %>
+    <%= render "users/shared/links" %>
+  </div>
 </div>
