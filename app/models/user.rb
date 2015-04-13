@@ -11,6 +11,7 @@ class User < ActiveRecord::Base
   has_many :followers, through: :passive_relationships, source: :follower
   enum role: [ :admin, :member ]
 
+  before_validation :normalize_attributes
   validates :role, inclusion: {in: User.roles.keys}
 
   def follow(other_user)
@@ -24,5 +25,10 @@ class User < ActiveRecord::Base
 
   def following?(other_user)
     following.include? other_user
+  end
+
+  private
+  def normalize_attributes
+    self.role ||= :member
   end
 end

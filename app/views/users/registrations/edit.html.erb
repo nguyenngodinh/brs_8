@@ -1,54 +1,72 @@
-<div class="well well-lg authform">
-  <h2>Edit <%= resource_name.to_s.humanize %></h2>
+<% provide(:title, "Edit #{resource_name.to_s.humanize}") %>
 
-  <%= form_for resource, as: resource_name, url: registration_path(resource_name),
-                         html: { method: :put } do |f| %>
-    <%= devise_error_messages! %>
+<div class="panel panel-success pannel-form">
+  <div class="panel-heading">
+    <h3 class="panel-title">
+      <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+      Edit <%= resource_name.to_s.humanize %>
+    </h3>
+  </div>
+  <div class="panel-body pannel-form-body">
+    <%= form_for resource, as: resource_name, url: registration_path(resource_name),
+                           html: { method: :put } do |f| %>
+      <%= devise_error_messages! %>
 
-    <div class="form-group">
-      <%= f.label :name %>
-      <%= f.text_field :name, autofocus: true, class: 'form-control' %>
-    </div>
+      <div class="form-group">
+        <%= f.label :name %>
+        <%= f.text_field :name, autofocus: true, class: 'form-control' %>
+      </div>
 
-    <div class="form-group">
-      <%= f.label :email %>
-      <%= f.email_field :email, class: 'form-control' %>
-    </div>
+      <div class="form-group">
+        <%= f.label :email %>
+        <%= f.email_field :email, class: 'form-control' %>
+      </div>
 
-    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-      <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+        <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+      <% end %>
+
+      <fieldset class="well well-sm">
+        <small>leave blank if you don't want to change it</small>
+        <div class="form-group">
+          <%= f.label :password %>
+          <%= f.password_field :password, autocomplete: 'off', class: 'form-control' %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :password_confirmation %>
+          <%= f.password_field :password_confirmation, autocomplete: 'off', class: 'form-control' %>
+        </div>
+      </fieldset>
+
+      <fieldset class="well well-sm">
+        <small>we need your current password to confirm your changes</small>
+        <div class="form-group">
+          <%= f.label :current_password %>
+          <%= f.password_field :current_password, autocomplete: 'off', class: 'form-control' %>
+        </div>
+      </fieldset>
+
+      <%= f.submit 'Update', class: 'btn btn-primary pull-right' %>
     <% end %>
-
-    <fieldset class="well well-sm">
-      <small>leave blank if you don't want to change it</small>
-      <div class="form-group">
-        <%= f.label :password %>
-        <%= f.password_field :password, autocomplete: 'off', class: 'form-control' %>
-      </div>
-
-      <div class="form-group">
-        <%= f.label :password_confirmation %>
-        <%= f.password_field :password_confirmation, autocomplete: 'off', class: 'form-control' %>
-      </div>
-    </fieldset>
-
-    <fieldset class="well well-sm">
-      <small>we need your current password to confirm your changes</small>
-      <div class="form-group">
-        <%= f.label :current_password %>
-        <%= f.password_field :current_password, autocomplete: 'off', class: 'form-control' %>
-      </div>
-    </fieldset>
-
-    <%= f.submit 'Update', class: 'btn btn-primary pull-right' %>
-  <% end %>
+  </div>
 </div>
 
-<div class="well well-lg authform">
-  <h2>Delete account</h2>
-  <p>Once you delete your account, there is no going back.<br/>Please be certain.</p>
-
-  <%= button_to "Delete account", registration_path(resource_name),
-                data: { confirm: "Are you sure?" }, method: :delete,
-                class: 'btn btn-danger pull-left' %>
+<div class="panel panel-danger pannel-form">
+  <div class="panel-heading">
+    <h3 class="panel-title">
+      <span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span>
+      Danger zone!
+    </h3>
+  </div>
+  <div class="panel-body pannel-form-body">
+    <div class="btn-toolbar" role="toolbar">
+    <%= button_to "Delete account", registration_path(resource_name),
+                  data: { confirm: "Are you sure?" }, method: :delete,
+                  class: 'btn btn-danger pull-left' %>
+    </div>
+    <small>
+      Once you delete your account, there is no going back. Please be certain.
+    </small>
+  </div>
 </div>

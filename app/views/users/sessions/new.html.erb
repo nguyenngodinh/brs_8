@@ -1,27 +1,35 @@
-<div class="well well-lg authform">
-  <h2>Sign in</h2>
+<% provide(:title, 'Sign in') %>
 
-  <%= form_for resource, as: resource_name, url: session_path(resource_name),
-                         html: { role: 'form'} do |f| %>
-    <div class="form-group">
-      <%= f.label :email %>
-      <%= f.email_field :email, autofocus: true, class: 'form-control' %>
-    </div>
-
-    <div class="form-group">
-      <%= f.label :password %>
-      <%= f.password_field :password, autocomplete: 'off', class: 'form-control' %>
-    </div>
-
-    <% if devise_mapping.rememberable? %>
+<div class="panel panel-success pannel-form">
+  <div class="panel-heading">
+    <h3 class="panel-title">
+      <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>
+      Sign in
+    </h3>
+  </div>
+  <div class="panel-body pannel-form-body">
+    <%= form_for resource, as: resource_name, url: session_path(resource_name),
+                           html: { role: 'form'} do |f| %>
       <div class="form-group">
-        <%= f.check_box :remember_me %>
-        <%= f.label :remember_me %>
+        <%= f.label :email %>
+        <%= f.email_field :email, autofocus: true, class: 'form-control' %>
       </div>
+
+      <div class="form-group">
+        <%= f.label :password %>
+        <%= f.password_field :password, autocomplete: 'off', class: 'form-control' %>
+      </div>
+
+      <% if devise_mapping.rememberable? %>
+        <div class="form-group">
+          <%= f.check_box :remember_me %>
+          <%= f.label :remember_me %>
+        </div>
+      <% end %>
+
+      <%= f.submit 'Sign in', class: 'btn btn-primary pull-right' %>
     <% end %>
 
-    <%= f.submit 'Sign in', class: 'btn btn-primary pull-right' %>
-  <% end %>
-
-  <%= render "users/shared/links" %>
+    <%= render "users/shared/links" %>
+  </div>
 </div>
